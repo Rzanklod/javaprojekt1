@@ -31,7 +31,8 @@ public class PaperBook extends Book implements Rentable {
 
     @Override
     public void rent(User user) throws NoAvailableResourceException {
-        if(this.user != null || getStatus() == ResourceStatus.UNAVAILABLE || user == null) {
+        if(user == null) return;
+        if(this.user != null || getStatus() == ResourceStatus.UNAVAILABLE) {
             throw new NoAvailableResourceException();
         }
         this.user = user;
